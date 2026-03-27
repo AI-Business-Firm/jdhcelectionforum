@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — JDHC Election Forum</title>
+<style>
+/* ============================================
+   JDHC Election Forum — Shared Stylesheet
+   ============================================ */
+
+:root {
+  --navy:       #1a2744;
+  --navy-deep:  #111b33;
+  --navy-mid:   #243260;
+  --gold:       #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale:  #f5e9c8;
+  --cream:      #faf7f2;
+  --warm-white: #fffdf9;
+  --text:       #2c2c2c;
+  --muted:      #6b6b6b;
+  --border:     #ddd5c4;
+  --red:        #8b1a1a;
+  --dem-blue:   #1a4b8c;
+  --rep-red:    #8b1a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- NAV ---- */
+.nav {
+  background: var(--navy-deep);
+  border-bottom: 3px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-seal {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--navy-deep);
+  font-family: Georgia, serif;
+  flex-shrink: 0;
+}
+
+.nav-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.nav-title span {
+  display: block;
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  font-family: Georgia, serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  transition: 0.3s;
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding: 12px 20px 16px;
+}
+
+.mobile-menu.open { display: block; }
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-family: Georgia, serif;
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ---- PAGE HERO ---- */
+.hero {
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 60%, #1f3a6e 100%);
+  padding: 60px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--cream);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- MAIN CONTENT WRAP ---- */
+.main {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+.main-wide {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+/* ---- SECTION LABELS ---- */
+.section-label {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 36px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Georgia, serif;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover { box-shadow: 0 6px 24px rgba(26,39,68,0.09); }
+
+.card-header {
+  background: var(--navy);
+  padding: 16px 22px 14px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  font-family: Georgia, serif;
+}
+
+.card-desc {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.card-body { padding: 18px 22px 20px; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 32px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 3px solid var(--gold);
+}
+
+.btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-bottom: 3px solid #a07830;
+}
+
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+
+.btn-outline:hover { background: var(--navy); color: #fff; }
+
+/* ---- FORM ELEMENTS ---- */
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: Georgia, serif;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+  background: var(--warm-white);
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--navy-deep);
+  border-top: 3px solid var(--gold);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+  font-family: Georgia, serif;
+}
+
+.site-footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ---- UTILITY ---- */
+.text-center { text-align: center; }
+.mt-sm { margin-top: 12px; }
+.mt-md { margin-top: 24px; }
+.mt-lg { margin-top: 40px; }
+.mb-sm { margin-bottom: 12px; }
+.mb-md { margin-bottom: 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ---- PARTY BADGES ---- */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: Georgia, serif;
+}
+
+.badge-dem { background: rgba(26,75,140,0.15); color: var(--dem-blue); border: 1px solid rgba(26,75,140,0.3); }
+.badge-rep { background: rgba(139,26,26,0.12); color: var(--rep-red); border: 1px solid rgba(139,26,26,0.25); }
+.badge-nonpartisan { background: rgba(201,168,76,0.15); color: #7a5c10; border: 1px solid rgba(201,168,76,0.4); }
+
+</style>
+<style>
+  .about-content { max-width: 800px; margin: 0 auto; }
+
+  .about-block {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+
+  .about-block h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-block p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  .about-block p:last-child { margin-bottom: 0; }
+
+  .about-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+  }
+
+  .about-block ul li {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.7;
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(221,213,196,0.5);
+  }
+
+  .about-block ul li:last-child { border-bottom: none; }
+
+  .about-block ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 580px) {
+    .schedule-grid { grid-template-columns: 1fr; }
+    .about-block { padding: 20px 18px; }
+  }
+
+  .schedule-card {
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .schedule-card-header {
+    padding: 12px 18px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .schedule-card-header.rep { background: var(--rep-red); }
+  .schedule-card-header.dem { background: var(--dem-blue); }
+
+  .schedule-card-date {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 3px;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .schedule-card-body {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 12px 18px;
+  }
+
+  .schedule-item {
+    font-size: 13px;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(221,213,196,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .schedule-item:last-child { border-bottom: none; }
+
+  .schedule-time {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cta-box {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 32px 36px;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .cta-box h3 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .cta-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 22px;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-seal">J</div>
+      <div class="nav-title">
+        JDHC Election Forum
+        <span>Joppa / Joppatowne</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="candidates.html">Candidates</a></li>
+      <li><a href="questions.html">Submit a Question</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="candidates.html">Candidates</a>
+    <a href="questions.html">Submit a Question</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Joppa Development and Heritage Corporation</div>
+  <h1>About This Forum</h1>
+  <p class="hero-sub">A nonpartisan community event giving every resident a chance to hear directly from the people running to represent them.</p>
+</div>
+
+<div class="main">
+<div class="about-content">
+
+  <div class="section-label">Our Mission</div>
+
+  <div class="about-block">
+    <h2>Why We Are Doing This</h2>
+    <p>The Joppa Development and Heritage Corporation is hosting this candidate forum to give residents of Joppa and Joppatowne a direct, unfiltered opportunity to hear from the people who want to represent them in local, county, and state government.</p>
+    <p>Local elections have a massive impact on everyday life — the roads we drive, the schools our kids attend, the safety of our neighborhoods, and the long-term development of our community. Yet voter turnout in local primaries is often very low, partly because people simply do not have enough information about who is running and what they stand for.</p>
+    <p>This forum exists to change that. Every resident deserves to know their candidates, and every candidate deserves a fair, equal platform to speak from.</p>
+  </div>
+
+  <div class="about-block">
+    <h2>How It Works</h2>
+    <ul>
+      <li>Community members submit questions through this website ahead of the forum</li>
+      <li>Questions are reviewed and prioritized based on the topics that come up most often</li>
+      <li>Each forum night features candidates for competitive races in a structured Q&amp;A format</li>
+      <li>Non-competitive candidates are invited for brief introductions</li>
+      <li>Both forum nights are livestreamed on YouTube so anyone can watch regardless of whether they can attend in person</li>
+      <li>Recordings stay publicly available after the event</li>
+    </ul>
+  </div>
+
+  <div class="section-label">Forum Schedule</div>
+
+  <div class="about-block">
+    <h2>2026 Primary Forum Dates</h2>
+    <div class="schedule-grid">
+
+      <div class="schedule-card">
+        <div class="schedule-card-header rep">
+          Republican Primary Forum
+          <div class="schedule-card-date">Date TBD — 6:00 PM</div>
+        </div>
+        <div class="schedule-card-body">
+          <div class="schedule-item"><span>Sheriff</span><span class="schedule-time">6:05 PM</span></div>
+          <div class="schedule-item"><span>President of the County Council</span><span class="schedule-time">6:30 PM</span></div>
+          <div class="schedule-item"><span>County Executive</span><span class="schedule-time">7:05 PM</span></div>
+          <div class="schedule-item"><span>County Council District B <em style="font-size:10px;">(if included)</em></span><span class="schedule-time">7:40 PM</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="schedule-card-header dem">
+          Democratic Primary Forum
+          <div class="schedule-card-date">Date TBD — 6:00 PM</div>
+        </div>
+        <div class="schedule-card-body">
+          <div class="schedule-item"><span>County Council — District A</span><span class="schedule-time">6:05 PM</span></div>
+          <div class="schedule-item"><span>County Executive</span><span class="schedule-time">6:40 PM</span></div>
+          <div class="schedule-item"><span>State Senate — District 34</span><span class="schedule-time">7:05 PM</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--muted);font-style:italic;">Joppatowne Christian Church, 725 Trimble Rd, Joppatowne, MD 21085. Both forums will also be <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:var(--gold);">streamed live on YouTube</a>.</p>
+  </div>
+
+  
+  <div class="section-label">Venue</div>
+
+  <!-- Church photo placeholder - replace src with your uploaded photo -->
+  <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-bottom:16px;">
+    <div style="background:var(--navy);padding:14px 22px;">
+      <div style="font-size:16px;font-weight:bold;color:#fff;">Joppatowne Christian Church</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:4px;">725 Trimble Rd, Joppatowne, MD 21085</div>
+    </div>
+
+    <!-- CHURCH PHOTO: Upload your photo and replace the placeholder below -->
+    <div id="church-photo-container" style="width:100%;background:#e8e4dc;min-height:220px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);">
+      <div style="text-align:center;color:var(--muted);padding:30px;">
+        <div style="font-size:36px;margin-bottom:10px;">📷</div>
+        <div style="font-size:13px;font-style:italic;">Church photo coming soon</div>
+      </div>
+    </div>
+    <!-- END CHURCH PHOTO -->
+
+        <!-- Venue Map via OpenStreetMap - no API key needed -->
+    <div style="width:100%;height:300px;overflow:hidden;">
+      <iframe
+        width="100%"
+        height="300"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+        style="border:0;display:block;"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-76.3465%2C39.4054%2C-76.3265%2C39.4154&layer=mapnik&marker=39.4104%2C-76.3365"
+        title="Joppatowne Christian Church location map">
+      </iframe>
+    </div>
+
+    <!-- Directions button -->
+    <div style="padding:16px 22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--border);">
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085"
+         target="_blank"
+         style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;padding:11px 22px;border-radius:2px;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;border-bottom:3px solid var(--gold);">
+        🗺️ Get Directions
+      </a>
+      <span style="font-size:12px;color:var(--muted);font-style:italic;">Opens in Google Maps</span>
+    </div>
+  </div>
+
+<div class="section-label">Our Principles</div>
+
+  <div class="about-block">
+    <h2>Nonpartisan by Design</h2>
+    <p>This forum is completely nonpartisan. We are not affiliated with any political party, candidate, or campaign. Our only goal is to give the community accurate information and a fair platform to hear from all candidates equally.</p>
+    <ul>
+      <li>All candidates are given equal time and equal treatment</li>
+      <li>Questions are selected based on community interest, not political preference</li>
+      <li>No candidate or party receives any promotional advantage through this forum</li>
+      <li>The forum is free and open to all residents</li>
+    </ul>
+  </div>
+
+  <div class="about-block">
+    <h2>About the JDHC</h2>
+    <p>The Joppa Development and Heritage Corporation is a community organization dedicated to the civic, cultural, and historical development of the Joppa and Joppatowne area of Harford County, Maryland. The JDHC works to keep residents informed and engaged with local government and community affairs.</p>
+  </div>
+
+  <div class="section-label">Get Involved</div>
+
+  <div class="cta-box">
+    <h3>Ready to Participate?</h3>
+    <p>Submit your questions for the candidates or learn more about who is running for office in your community.</p>
+    <div class="cta-buttons">
+      <a href="questions.html" class="btn btn-gold">Submit a Question</a>
+      <a href="candidates.html" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);">Meet the Candidates</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <p>
+    Hosted by the <strong style="color:rgba(255,255,255,0.7)"><a href="https://www.joppadhc.org" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;">Joppa Development and Heritage Corporation</a></strong><br>
+    This is a nonpartisan community event. All candidates are welcome regardless of party affiliation.<br>
+    <span style="color:rgba(255,255,255,0.3);">Website designed and developed by Steven Hackman at Business Firm AI</span><br>
+    <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="candidates.html">Candidates</a> &nbsp;|&nbsp; <a href="questions.html">Submit a Question</a>
+  </p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

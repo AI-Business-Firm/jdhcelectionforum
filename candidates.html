@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidates — JDHC Election Forum</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidates — JDHC Election Forum</title>
+<style>
+/* ============================================
+   JDHC Election Forum — Shared Stylesheet
+   ============================================ */
+
+:root {
+  --navy:       #1a2744;
+  --navy-deep:  #111b33;
+  --navy-mid:   #243260;
+  --gold:       #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale:  #f5e9c8;
+  --cream:      #faf7f2;
+  --warm-white: #fffdf9;
+  --text:       #2c2c2c;
+  --muted:      #6b6b6b;
+  --border:     #ddd5c4;
+  --red:        #8b1a1a;
+  --dem-blue:   #1a4b8c;
+  --rep-red:    #8b1a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- NAV ---- */
+.nav {
+  background: var(--navy-deep);
+  border-bottom: 3px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-seal {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--navy-deep);
+  font-family: Georgia, serif;
+  flex-shrink: 0;
+}
+
+.nav-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.nav-title span {
+  display: block;
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  font-family: Georgia, serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  transition: 0.3s;
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding: 12px 20px 16px;
+}
+
+.mobile-menu.open { display: block; }
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-family: Georgia, serif;
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ---- PAGE HERO ---- */
+.hero {
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 60%, #1f3a6e 100%);
+  padding: 60px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--cream);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- MAIN CONTENT WRAP ---- */
+.main {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+.main-wide {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+/* ---- SECTION LABELS ---- */
+.section-label {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 36px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Georgia, serif;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover { box-shadow: 0 6px 24px rgba(26,39,68,0.09); }
+
+.card-header {
+  background: var(--navy);
+  padding: 16px 22px 14px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  font-family: Georgia, serif;
+}
+
+.card-desc {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.card-body { padding: 18px 22px 20px; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 32px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 3px solid var(--gold);
+}
+
+.btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-bottom: 3px solid #a07830;
+}
+
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+
+.btn-outline:hover { background: var(--navy); color: #fff; }
+
+/* ---- FORM ELEMENTS ---- */
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: Georgia, serif;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+  background: var(--warm-white);
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--navy-deep);
+  border-top: 3px solid var(--gold);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+  font-family: Georgia, serif;
+}
+
+.site-footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ---- UTILITY ---- */
+.text-center { text-align: center; }
+.mt-sm { margin-top: 12px; }
+.mt-md { margin-top: 24px; }
+.mt-lg { margin-top: 40px; }
+.mb-sm { margin-bottom: 12px; }
+.mb-md { margin-bottom: 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ---- PARTY BADGES ---- */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: Georgia, serif;
+}
+
+.badge-dem { background: rgba(26,75,140,0.15); color: var(--dem-blue); border: 1px solid rgba(26,75,140,0.3); }
+.badge-rep { background: rgba(139,26,26,0.12); color: var(--rep-red); border: 1px solid rgba(139,26,26,0.25); }
+.badge-nonpartisan { background: rgba(201,168,76,0.15); color: #7a5c10; border: 1px solid rgba(201,168,76,0.4); }
+
+</style>
+<style>
+  .race-group {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .race-group-header {
+    padding: 14px 22px 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .race-group-header.rep-bg { background: linear-gradient(135deg, var(--rep-red), #6b1313); }
+  .race-group-header.dem-bg { background: linear-gradient(135deg, var(--dem-blue), #12366b); }
+  .race-group-header.nonpartisan-bg { background: linear-gradient(135deg, #5a4a2a, #7a6030); }
+
+  .race-group-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .race-group-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 3px;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .race-body { padding: 16px 22px 20px; }
+
+  .race-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .race-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--navy);
+  }
+
+  .race-desc-text {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .candidate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px;
+  }
+
+  .candidate-card {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 13px 15px;
+    background: var(--cream);
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+
+  .candidate-card:hover {
+    box-shadow: 0 4px 16px rgba(26,39,68,0.1);
+    transform: translateY(-1px);
+  }
+
+  .candidate-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .candidate-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .candidate-link {
+    font-size: 11px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 1px;
+  }
+
+  .no-website {
+    font-size: 11px;
+    color: #bbb;
+    font-style: italic;
+  }
+
+  .race-divider {
+    border: none;
+    border-top: 1px dashed var(--border);
+    margin: 18px 0;
+  }
+
+  .competitive-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(201,168,76,0.15);
+    color: #7a5c10;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .noncompetitive-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(107,107,107,0.1);
+    color: var(--muted);
+    border: 1px solid rgba(107,107,107,0.2);
+  }
+
+  .notice-box {
+    background: rgba(26,39,68,0.04);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .video-note {
+    background: rgba(26,39,68,0.04);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--navy);
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .district-b-note {
+    background: rgba(139,26,26,0.05);
+    border: 1px solid rgba(139,26,26,0.2);
+    border-left: 3px solid var(--rep-red);
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: #5a1010;
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-seal">J</div>
+      <div class="nav-title">
+        JDHC Election Forum
+        <span>Joppa / Joppatowne</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="candidates.html" class="active">Candidates</a></li>
+      <li><a href="questions.html">Submit a Question</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="candidates.html" class="active">Candidates</a>
+    <a href="questions.html">Submit a Question</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">2026 Primary Election</div>
+  <h1>Meet the Candidates</h1>
+  <p class="hero-sub">Learn who is running for office in Harford County. Candidates who cannot attend in person may submit a video response that will be included in the livestream.</p>
+</div>
+
+<div class="main-wide">
+
+  <div class="notice-box">
+    Candidate information is updated as confirmations are received. Campaign website links are provided for informational purposes only and do not constitute an endorsement. This forum is completely nonpartisan. Candidates who cannot attend in person are welcome to submit a video response for inclusion in the livestream.
+  </div>
+
+  <!-- ===================== REPUBLICAN ===================== -->
+  <div class="section-label">Republican Primary — May 12, 2026</div>
+
+  <div class="race-group">
+    <div class="race-group-header rep-bg">
+      <div>
+        <div class="race-group-title">Republican Candidates</div>
+        <div class="race-group-subtitle">Primary Forum — Date TBD &nbsp;·&nbsp; 6:00 PM &nbsp;·&nbsp; <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:underline;">Joppatowne Christian Church</a></div>
+      </div>
+    </div>
+    <div class="race-body">
+
+      <!-- Sheriff -->
+      <div class="race-title-row">
+        <div class="race-name">Sheriff</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 6:05 PM</span>
+      </div>
+      <p class="race-desc-text">The chief law enforcement officer of Harford County. Responsible for running the county jail, courthouse security, serving legal documents, and supporting local police departments.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Jeffrey R. Gahler</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Keith Runk</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <!-- President of County Council -->
+      <div class="race-title-row">
+        <div class="race-name">President of the County Council</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 6:30 PM</span>
+      </div>
+      <p class="race-desc-text">Leads the county's seven-member legislative body, sets the agenda for council meetings, and serves as chief spokesperson. Guides the passage of local laws, zoning decisions, and the county budget.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Billy Boniface</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Tony "G" Giangiordano</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        
+      </div>
+
+      <hr class="race-divider">
+
+      <!-- County Executive -->
+      <div class="race-title-row">
+        <div class="race-name">County Executive</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 7:05 PM</span>
+      </div>
+      <p class="race-desc-text">Harford County's top elected official, similar to a mayor. Oversees all county departments, proposes the annual budget, and manages day-to-day county operations including public works, planning, and emergency services.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Bob Cassilly</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Spencer Dagner</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Patrick Vincenti</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <!-- County Council B - TBD -->
+      <div class="race-title-row">
+        <div class="race-name">County Council — District B</div>
+        <span class="noncompetitive-tag">Inclusion TBD &nbsp;·&nbsp; 7:40 PM if included</span>
+      </div>
+      <div class="district-b-note">
+        This is a 3-way race that would add approximately 30 minutes to the forum, extending the evening to 8:10 PM. A decision on whether to include District B candidates is still pending. If included, they would appear at 7:40 PM.
+      </div>
+      <p class="race-desc-text">Represents District B on the county's seven-member legislative body, voting on local laws, zoning changes, and the county budget.</p>
+      <div class="candidate-grid">
+        
+        <div class="candidate-card">
+          <div class="candidate-name">Russ English, Jr.</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Stephanie Flasch</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Alison Imhoff</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Delegate — District 7B</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Lauren Arikan</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Senate — District 7</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">J.B. Jennings</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Delegate — District 34A</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Elliott Joseph Herneker</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Senate — District 34</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Raj Goel</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== DEMOCRATIC ===================== -->
+  <div class="section-label">Democratic Primary — May 19, 2026</div>
+
+  <div class="race-group">
+    <div class="race-group-header dem-bg">
+      <div>
+        <div class="race-group-title">Democratic Candidates</div>
+        <div class="race-group-subtitle">Primary Forum — Date TBD &nbsp;·&nbsp; 6:00 PM &nbsp;·&nbsp; <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.7);text-decoration:underline;">Joppatowne Christian Church</a></div>
+      </div>
+    </div>
+    <div class="race-body">
+
+      <!-- County Council District A -->
+      <div class="race-title-row">
+        <div class="race-name">County Council — District A</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 6:05 PM</span>
+      </div>
+      <p class="race-desc-text">Represents Joppa and Joppatowne on the county's seven-member legislative body. Votes on local laws, zoning changes, and the county budget — your most direct voice in county government.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Kelly "Bear" Bryant</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Dion F. Guthrie</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Nolanda Robert</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <!-- County Executive -->
+      <div class="race-title-row">
+        <div class="race-name">County Executive</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 6:40 PM</span>
+      </div>
+      <p class="race-desc-text">Harford County's top elected official, similar to a mayor. Oversees all county departments, proposes the annual budget, and manages day-to-day county operations including public works, planning, and emergency services.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Matthew J. Brown</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Barbara Osborn Kreamer</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <!-- State Senate 34 -->
+      <div class="race-title-row">
+        <div class="race-name">State Senate — District 34</div>
+        <span class="competitive-tag">Competitive &nbsp;·&nbsp; 7:05 PM</span>
+      </div>
+      <p class="race-desc-text">Represents District 34 in the Maryland State Senate, working on state-level legislation covering education, transportation, public safety, and the state budget.</p>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Mary-Dulany James</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Blane H. Miller, III</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">President of the County Council</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Mike Ciufo</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">Sheriff</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Terrence Rogers</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Delegate — District 7B</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Candace Hart</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Senate — District 7</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Bill Geibler</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row"><div class="race-name">State Delegate — District 34A</div><span class="noncompetitive-tag">Non-Competitive</span></div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Andre V. Johnson, Jr. / Steve Johnson</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMBINED NON-COMPETITIVE -->
+  <div class="section-label">Non-Competitive Races</div>
+
+  <div class="race-group">
+    <div class="race-group-header nonpartisan-bg">
+      <div>
+        <div class="race-group-title">Non-Competitive Races — All Candidates Advance to General Election</div>
+        <div class="race-group-subtitle">These candidates are running unopposed and are welcome to attend either forum night for a brief introduction. They will not be asked formal questions but will have a moment to introduce themselves.</div>
+      </div>
+    </div>
+    <div class="race-body">
+
+      <div class="race-title-row">
+        <div class="race-name">County Council — District A</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Jeff Beck</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">County Council — District B</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Isabela Dela Cruz</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">President of the County Council</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Mike Ciufo</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">Sheriff</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Terrence Rogers</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">State Delegate — District 7B</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Candace Hart</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Lauren Arikan</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">State Senate — District 7</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Bill Geibler</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">J.B. Jennings</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">State Delegate — District 34A</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Andre V. Johnson, Jr.</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Steve Johnson</div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+        </div>
+        <div class="candidate-card">
+          <div class="candidate-name">Elliott Joseph Herneker</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+      <hr class="race-divider">
+
+      <div class="race-title-row">
+        <div class="race-name">State Senate — District 34</div>
+        <span class="noncompetitive-tag">Non-Competitive</span>
+      </div>
+      <div class="candidate-grid">
+        <div class="candidate-card">
+          <div class="candidate-name">Raj Goel</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<footer class="site-footer">
+  <p>
+    Hosted by the <strong style="color:rgba(255,255,255,0.7)"><a href="https://www.joppadhc.org" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;">Joppa Development and Heritage Corporation</a></strong><br>
+    Candidate information updated as confirmations are received. Campaign links are for informational purposes only.<br>
+    <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="questions.html">Submit a Question</a> &nbsp;|&nbsp; <a href="about.html">About</a>
+  </p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

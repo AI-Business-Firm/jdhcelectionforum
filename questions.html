@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit a Question — JDHC Election Forum</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit a Question — JDHC Election Forum</title>
+<style>
+/* ============================================
+   JDHC Election Forum — Shared Stylesheet
+   ============================================ */
+
+:root {
+  --navy:       #1a2744;
+  --navy-deep:  #111b33;
+  --navy-mid:   #243260;
+  --gold:       #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-pale:  #f5e9c8;
+  --cream:      #faf7f2;
+  --warm-white: #fffdf9;
+  --text:       #2c2c2c;
+  --muted:      #6b6b6b;
+  --border:     #ddd5c4;
+  --red:        #8b1a1a;
+  --dem-blue:   #1a4b8c;
+  --rep-red:    #8b1a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- NAV ---- */
+.nav {
+  background: var(--navy-deep);
+  border-bottom: 3px solid var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-seal {
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--navy-deep);
+  font-family: Georgia, serif;
+  flex-shrink: 0;
+}
+
+.nav-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.nav-title span {
+  display: block;
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  font-family: Georgia, serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  transition: 0.3s;
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  padding: 12px 20px 16px;
+}
+
+.mobile-menu.open { display: block; }
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-family: Georgia, serif;
+}
+
+.mobile-menu a:hover { color: var(--gold); }
+
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ---- PAGE HERO ---- */
+.hero {
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 60%, #1f3a6e 100%);
+  padding: 60px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--cream);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 6vw, 52px);
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  font-family: Georgia, serif;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- MAIN CONTENT WRAP ---- */
+.main {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+.main-wide {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 60px;
+}
+
+/* ---- SECTION LABELS ---- */
+.section-label {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 36px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: Georgia, serif;
+}
+
+.section-label::before,
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover { box-shadow: 0 6px 24px rgba(26,39,68,0.09); }
+
+.card-header {
+  background: var(--navy);
+  padding: 16px 22px 14px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  font-family: Georgia, serif;
+}
+
+.card-desc {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.card-body { padding: 18px 22px 20px; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 32px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 3px solid var(--gold);
+}
+
+.btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-bottom: 3px solid #a07830;
+}
+
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+}
+
+.btn-outline:hover { background: var(--navy); color: #fff; }
+
+/* ---- FORM ELEMENTS ---- */
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: Georgia, serif;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+  background: var(--warm-white);
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  background: var(--navy-deep);
+  border-top: 3px solid var(--gold);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+  font-family: Georgia, serif;
+}
+
+.site-footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ---- UTILITY ---- */
+.text-center { text-align: center; }
+.mt-sm { margin-top: 12px; }
+.mt-md { margin-top: 24px; }
+.mt-lg { margin-top: 40px; }
+.mb-sm { margin-bottom: 12px; }
+.mb-md { margin-bottom: 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ---- PARTY BADGES ---- */
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: Georgia, serif;
+}
+
+.badge-dem { background: rgba(26,75,140,0.15); color: var(--dem-blue); border: 1px solid rgba(26,75,140,0.3); }
+.badge-rep { background: rgba(139,26,26,0.12); color: var(--rep-red); border: 1px solid rgba(139,26,26,0.25); }
+.badge-nonpartisan { background: rgba(201,168,76,0.15); color: #7a5c10; border: 1px solid rgba(201,168,76,0.4); }
+
+
+  /* ---- PRIORITY STEPPERS ---- */
+  .priority-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 580px) {
+    .priority-grid { grid-template-columns: 1fr; }
+  }
+
+  .priority-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 14px 16px;
+  }
+
+  .priority-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .priority-desc {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .stepper-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stepper-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+    background: var(--warm-white);
+    color: var(--navy);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .stepper-btn:active {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .stepper-display {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+
+  .stepper-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .stepper-bar-fill {
+    height: 100%;
+    background: var(--navy);
+    border-radius: 3px;
+    width: 44%;
+    transition: width 0.15s ease, background 0.15s ease;
+  }
+
+  .stepper-num {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--navy);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.15s;
+  }
+
+</style>
+<style>
+  .form-wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+  .voter-section { background: var(--warm-white); border: 1px solid var(--border); border-top: 3px solid var(--navy); border-radius: 2px; padding: 28px 28px 24px; margin-bottom: 28px; }
+  .voter-section-title { font-size: 15px; font-weight: bold; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .voter-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .race-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 14px; overflow: hidden; transition: box-shadow 0.2s; }
+  .race-card:hover { box-shadow: 0 4px 20px rgba(26,39,68,0.08); }
+  .race-header { background: var(--navy); padding: 14px 22px 12px; display: flex; align-items: flex-start; gap: 14px; }
+  .race-number { font-size: 10px; font-weight: bold; color: var(--gold); letter-spacing: 1px; min-width: 26px; padding-top: 2px; }
+  .race-info { flex: 1; }
+  .race-title { font-size: 16px; font-weight: bold; color: #fff; line-height: 1.3; margin-bottom: 4px; }
+  .race-desc { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; font-style: italic; }
+  .race-body { padding: 16px 22px 18px; }
+  .question-prompt { font-size: 11px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .question-prompt::before { content: ''; display: inline-block; width: 3px; height: 13px; background: var(--gold); border-radius: 2px; }
+  .submit-area { margin-top: 32px; text-align: center; }
+  .submit-note { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 16px; line-height: 1.6; }
+  .submit-btn { background: var(--navy); color: #fff; font-family: Georgia, serif; font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; border: none; padding: 15px 48px; border-radius: 2px; cursor: pointer; border-bottom: 3px solid var(--gold); transition: background 0.2s, transform 0.1s; }
+  .submit-btn:hover { background: var(--navy-mid); transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .success-msg { display: none; background: #f0f7f0; border: 1px solid #b5d6b5; border-left: 4px solid #4a8f4a; border-radius: 2px; padding: 20px 24px; margin-top: 20px; font-size: 14px; color: #2d5a2d; line-height: 1.7; }
+  .error-msg { display: none; background: #fdf0f0; border: 1px solid #e5b5b5; border-left: 4px solid #cc4444; border-radius: 2px; padding: 16px 20px; margin-top: 16px; font-size: 13px; color: #7a2020; line-height: 1.6; }
+  .airtable-note { background: rgba(26,39,68,0.04); border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 2px; padding: 14px 18px; font-size: 12.5px; color: var(--muted); font-style: italic; margin-bottom: 28px; line-height: 1.7; }
+  .priority-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 580px) { .priority-grid { grid-template-columns: 1fr; } }
+  .priority-item { background: var(--cream); border: 1px solid var(--border); border-radius: 2px; padding: 14px 16px; }
+  .priority-label { font-size: 13px; font-weight: bold; color: var(--navy); margin-bottom: 3px; }
+  .priority-desc { font-size: 11px; color: var(--muted); font-style: italic; margin-bottom: 12px; line-height: 1.4; }
+  .stepper-wrap { display: flex; align-items: center; gap: 8px; }
+  .stepper-btn { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--navy); background: var(--warm-white); color: var(--navy); font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; padding: 0; transition: background 0.15s, color 0.15s; -webkit-tap-highlight-color: transparent; }
+  .stepper-btn:active { background: var(--navy); color: #fff; }
+  .stepper-display { flex: 1; text-align: center; }
+  .stepper-bar-bg { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 6px; }
+  .stepper-bar-fill { height: 100%; background: var(--navy); border-radius: 3px; width: 44%; transition: width 0.15s ease, background 0.15s ease; }
+  .stepper-num { font-size: 20px; font-weight: bold; color: var(--navy); font-variant-numeric: tabular-nums; transition: color 0.15s; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-seal">J</div>
+      <div class="nav-title">
+        JDHC Election Forum
+        <span>Joppa / Joppatowne</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="candidates.html">Candidates</a></li>
+      <li><a href="questions.html" class="active">Submit a Question</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="candidates.html">Candidates</a>
+    <a href="questions.html" class="active">Submit a Question</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Your Voice Matters</div>
+  <h1>Submit a Question</h1>
+  <p class="hero-sub">Help shape the conversation. Submit your questions for the candidates and we will do our best to make sure the issues that matter most to this community get answered.</p>
+</div>
+
+<div class="form-wrap">
+
+  <div class="airtable-note">
+    <strong>How this works:</strong> Questions are submitted directly to our review system where we sort and prioritize them by topic. We will select the questions that best represent what the community cares about most. You do not need to fill out every section.
+  </div>
+
+  <!-- Honeypot spam trap -->
+  <div style="display:none;" aria-hidden="true">
+    <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+  </div>
+
+  <div class="voter-section">
+    <div class="voter-section-title">Your Information</div>
+    <div class="grid-2">
+      <div>
+        <label for="name">Your Name <span style="color:var(--muted);font-size:10px;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <input type="text" id="name" placeholder="First and last name">
+      </div>
+      <div>
+        <label for="party">Party Affiliation <span style="color:var(--muted);font-size:10px;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <select id="party">
+          <option value="" disabled selected>Select one</option>
+          <option>Democrat</option>
+          <option>Republican</option>
+          <option>Independent</option>
+          <option>Unaffiliated / Other</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-label">Forum Races</div>
+
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">01</div>
+      <div class="race-info">
+        <div class="race-title">Sheriff</div>
+        <div class="race-desc">The chief law enforcement officer of Harford County. Responsible for running the county jail, courthouse security, serving legal documents, and supporting local police departments.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-sheriff" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">02</div>
+      <div class="race-info">
+        <div class="race-title">President of the County Council</div>
+        <div class="race-desc">Leads the county's seven-member legislative body, sets meeting agendas, and serves as chief spokesperson. Guides the passage of local laws, zoning decisions, and the county budget.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-council-pres" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">03</div>
+      <div class="race-info">
+        <div class="race-title">County Executive</div>
+        <div class="race-desc">Harford County's top elected official, similar to a mayor. Oversees all county departments, proposes the annual budget, and manages day-to-day county operations including public works, planning, and emergency services.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-county-exec" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">04</div>
+      <div class="race-info">
+        <div class="race-title">County Council — District A</div>
+        <div class="race-desc">Represents Joppa and Joppatowne on the county's seven-member legislative body. Votes on local laws, zoning changes, and the county budget — your most direct voice in county government.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-council-a" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">05</div>
+      <div class="race-info">
+        <div class="race-title">County Council — District B</div>
+        <div class="race-desc">Represents District B on the county's seven-member legislative body, voting on local laws, zoning changes, and the county budget. Inclusion of District B candidates in the forum is still pending a final decision.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-council-b" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+  <div class="race-card">
+    <div class="race-header">
+      <div class="race-number">06</div>
+      <div class="race-info">
+        <div class="race-title">State Senate — District 34</div>
+        <div class="race-desc">Represents District 34 in the Maryland State Senate, working on state-level legislation covering education, transportation, public safety, and the state budget.</div>
+      </div>
+    </div>
+    <div class="race-body">
+      <div class="question-prompt">If you could ask one pressing question</div>
+      <textarea id="q-state-senate-34" placeholder="Type your question here..."></textarea>
+    </div>
+  </div>
+
+
+  <!-- COMMUNITY PRIORITIES -->
+  <div class="section-label">Community Priorities</div>
+
+  <div style="background:var(--warm-white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:2px;padding:28px 28px 24px;margin-bottom:28px;">
+    <div style="font-size:15px;font-weight:bold;color:var(--navy);margin-bottom:8px;">What issues matter most to you right now?</div>
+    <p style="font-size:13px;color:var(--muted);font-style:italic;line-height:1.7;margin-bottom:24px;">
+      Rate each topic based on how important it is to you in this election.<br>
+      <strong style="color:var(--navy);font-style:normal;">1 = Not as important &nbsp;&nbsp; 5 = Neutral &nbsp;&nbsp; 10 = Very important</strong>
+    </p>
+
+    <div class="priority-grid">
+      <div class="priority-item">
+        <div class="priority-label">Development / Growth</div>
+        <div class="priority-desc">New construction, zoning, neighborhood development</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-development', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-development-bar"></div></div>
+            <span class="stepper-num" id="p-development-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-development', 1)">&#43;</button>
+          <input type="hidden" id="p-development" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Roads / Traffic</div>
+        <div class="priority-desc">Road conditions, traffic congestion, infrastructure</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-roads', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-roads-bar"></div></div>
+            <span class="stepper-num" id="p-roads-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-roads', 1)">&#43;</button>
+          <input type="hidden" id="p-roads" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Schools / Education</div>
+        <div class="priority-desc">School quality, funding, curriculum, facilities</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-schools', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-schools-bar"></div></div>
+            <span class="stepper-num" id="p-schools-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-schools', 1)">&#43;</button>
+          <input type="hidden" id="p-schools" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Public Safety</div>
+        <div class="priority-desc">Crime, policing, emergency services, fire</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-safety', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-safety-bar"></div></div>
+            <span class="stepper-num" id="p-safety-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-safety', 1)">&#43;</button>
+          <input type="hidden" id="p-safety" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Taxes / Spending</div>
+        <div class="priority-desc">Property taxes, county budget, fiscal responsibility</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-taxes', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-taxes-bar"></div></div>
+            <span class="stepper-num" id="p-taxes-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-taxes', 1)">&#43;</button>
+          <input type="hidden" id="p-taxes" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Housing</div>
+        <div class="priority-desc">Affordable housing, rentals, homeownership, density</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-housing', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-housing-bar"></div></div>
+            <span class="stepper-num" id="p-housing-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-housing', 1)">&#43;</button>
+          <input type="hidden" id="p-housing" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Environment / Cleanliness</div>
+        <div class="priority-desc">Pollution, green spaces, waterways, trash and upkeep</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-environment', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-environment-bar"></div></div>
+            <span class="stepper-num" id="p-environment-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-environment', 1)">&#43;</button>
+          <input type="hidden" id="p-environment" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Parks / Recreation</div>
+        <div class="priority-desc">Parks, trails, recreational programs, community spaces</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-parks', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-parks-bar"></div></div>
+            <span class="stepper-num" id="p-parks-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-parks', 1)">&#43;</button>
+          <input type="hidden" id="p-parks" value="5">
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="priority-label">Community Services</div>
+        <div class="priority-desc">Senior services, mental health, social programs, libraries</div>
+        <div class="stepper-wrap">
+          <button type="button" class="stepper-btn" onclick="stepVal('p-services', -1)">&#8722;</button>
+          <div class="stepper-display">
+            <div class="stepper-bar-bg"><div class="stepper-bar-fill" id="p-services-bar"></div></div>
+            <span class="stepper-num" id="p-services-num">5</span>
+          </div>
+          <button type="button" class="stepper-btn" onclick="stepVal('p-services', 1)">&#43;</button>
+          <input type="hidden" id="p-services" value="5">
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;">
+      <label for="other-issue">Any other issue not listed above? <span style="color:var(--muted);font-size:10px;text-transform:none;letter-spacing:0;font-style:italic;">(optional)</span></label>
+      <input type="text" id="other-issue" placeholder="e.g. economic development, veteran services, public transit...">
+    </div>
+  </div>
+
+  <div class="submit-area">
+    <p class="submit-note">You do not need to fill out every section. Submit questions for whichever races matter most to you.</p>
+    <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit My Questions</button>
+    <div class="success-msg" id="successMsg">
+      <strong>Thank you!</strong> Your questions have been submitted successfully. We will review all submissions and do our best to make sure the issues most important to this community get addressed at the forum.
+    </div>
+    <div class="error-msg" id="errorMsg">
+      Something went wrong with the submission. Please try again or contact us directly.
+    </div>
+    <p class="submit-note" style="margin-top:16px;">Your information is used solely for this community forum and will not be shared or used for political purposes.</p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>
+    Hosted by the <strong style="color:rgba(255,255,255,0.7)"><a href="https://www.joppadhc.org" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;">Joppa Development and Heritage Corporation</a></strong><br>
+    This is a nonpartisan community event. All candidates are welcome regardless of party affiliation.<br>
+    <span style="color:rgba(255,255,255,0.3);">Website designed and developed by Steven Hackman at Business Firm AI</span><br>
+    <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="candidates.html">Candidates</a> &nbsp;|&nbsp; <a href="about.html">About</a>
+  </p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  const KEYS = ['development','roads','schools','safety','taxes','housing','environment','parks','services'];
+
+  function stepVal(id, delta) {
+    const hidden = document.getElementById(id);
+    let val = parseInt(hidden.value) + delta;
+    if (val < 1) val = 1;
+    if (val > 10) val = 10;
+    hidden.value = val;
+    const numEl = document.getElementById(id + '-num');
+    if (numEl) {
+      numEl.textContent = val;
+      if (val <= 3) numEl.style.color = '#aaa';
+      else if (val <= 6) numEl.style.color = '#c9a84c';
+      else numEl.style.color = '#8b1a1a';
+    }
+    const barEl = document.getElementById(id + '-bar');
+    if (barEl) {
+      const pct = ((val - 1) / 9) * 100;
+      barEl.style.width = pct + '%';
+      if (val <= 3) barEl.style.background = '#ccc';
+      else if (val <= 6) barEl.style.background = '#c9a84c';
+      else barEl.style.background = '#8b1a1a';
+    }
+  }
+
+  async function handleSubmit() {
+    const btn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+
+    const name  = document.getElementById('name').value.trim();
+    const party = document.getElementById('party').value;
+
+    const payload = {
+      honeypot:         document.getElementById('honeypot').value,
+      name,
+      party,
+      q_sheriff:        document.getElementById('q-sheriff').value.trim(),
+      q_council_pres:   document.getElementById('q-council-pres').value.trim(),
+      q_county_exec:    document.getElementById('q-county-exec').value.trim(),
+      q_council_a:      document.getElementById('q-council-a').value.trim(),
+      q_council_b:      document.getElementById('q-council-b').value.trim(),
+      q_state_senate_34:document.getElementById('q-state-senate-34').value.trim(),
+      p_development:    document.getElementById('p-development').value,
+      p_roads:          document.getElementById('p-roads').value,
+      p_schools:        document.getElementById('p-schools').value,
+      p_safety:         document.getElementById('p-safety').value,
+      p_taxes:          document.getElementById('p-taxes').value,
+      p_housing:        document.getElementById('p-housing').value,
+      p_environment:    document.getElementById('p-environment').value,
+      p_parks:          document.getElementById('p-parks').value,
+      p_services:       document.getElementById('p-services').value,
+      other_issue:      document.getElementById('other-issue').value.trim(),
+    };
+
+    const hasQuestion = [
+      payload.q_sheriff, payload.q_council_pres, payload.q_county_exec,
+      payload.q_council_a, payload.q_council_b, payload.q_state_senate_34
+    ].some(q => q && q.length > 0);
+
+    if (!hasQuestion) {
+      alert('Please fill in at least one question before submitting.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    errorMsg.style.display = 'none';
+
+    try {
+      const response = await fetch('/.netlify/functions/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        btn.textContent = 'Submitted!';
+        btn.style.background = '#2d5a2d';
+        btn.style.borderBottomColor = '#1a3a1a';
+        successMsg.style.display = 'block';
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Submit My Questions';
+      errorMsg.style.display = 'block';
+      console.error('Submission error:', err);
+    }
+  }
+</script>
+
+</body>
+</html>
