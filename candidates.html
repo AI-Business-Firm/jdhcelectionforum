@@ -432,6 +432,76 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
 .badge-rep { background: rgba(139,26,26,0.12); color: var(--rep-red); border: 1px solid rgba(139,26,26,0.25); }
 .badge-nonpartisan { background: rgba(201,168,76,0.15); color: #7a5c10; border: 1px solid rgba(201,168,76,0.4); }
 
+
+  .cand-card { cursor: pointer; transition: box-shadow 0.15s, border-color 0.15s; }
+  .cand-card:hover { box-shadow: 0 2px 12px rgba(26,39,68,0.10); border-color: var(--gold); }
+  .card-view-info { font-size: 10px; color: var(--gold); font-weight: bold; letter-spacing: 0.5px; margin-top: 6px; display: none; }
+  .card-info-tbd { font-size: 10px; color: var(--muted); font-style: italic; margin-top: 6px; }
+  .has-links .card-view-info { display: block; }
+  .has-links .card-info-tbd { display: none; }
+
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .popup-overlay.open { display: flex; }
+  .popup-box {
+    background: #fff;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  }
+  .popup-head {
+    background: var(--navy);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .popup-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 15px; flex-shrink: 0;
+    background: rgba(201,168,76,0.2); color: var(--gold);
+    border: 2px solid var(--gold);
+  }
+  .popup-cand-name { font-size: 16px; font-weight: bold; color: #fff; line-height: 1.3; margin-bottom: 3px; }
+  .popup-cand-office { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 5px; }
+  .popup-close {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px; width: 28px; height: 28px; cursor: pointer;
+    color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.15s;
+  }
+  .popup-close:hover { background: rgba(255,255,255,0.2); }
+  .popup-links-section { padding: 16px 20px 20px; }
+  .popup-links-heading { font-size: 9px; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .popup-link-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; transition: background 0.1s;
+  }
+  .popup-link-row:last-child { border-bottom: none; }
+  .popup-link-row:hover .popup-link-label { color: var(--gold); }
+  .popup-link-icon {
+    width: 32px; height: 32px; border-radius: 3px;
+    background: var(--cream); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--navy); font-size: 13px;
+  }
+  .popup-link-label { font-size: 13px; font-weight: bold; color: var(--navy); }
+  .popup-link-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .popup-no-links { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; font-style: italic; }
+
 </style>
 <style>
   .race-group {
@@ -616,6 +686,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
     line-height: 1.6;
   }
 </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -677,13 +748,15 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">The chief law enforcement officer of Harford County. Responsible for running the county jail, courthouse security, serving legal documents, and supporting local police departments.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Jeffrey R. Gahler', 'Sheriff', 'Republican', 'badge-rep')">
           <div class="candidate-name">Jeffrey R. Gahler</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Keith Runk', 'Sheriff', 'Republican', 'badge-rep')">
           <div class="candidate-name">Keith Runk</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -696,13 +769,15 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Leads the county's seven-member legislative body, sets the agenda for council meetings, and serves as chief spokesperson. Guides the passage of local laws, zoning decisions, and the county budget.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Billy Boniface', 'President of the County Council', 'Republican', 'badge-rep')">
           <div class="candidate-name">Billy Boniface</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Tony "G" Giangiordano', 'President of the County Council', 'Republican', 'badge-rep')">
           <div class="candidate-name">Tony "G" Giangiordano</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
         
       </div>
@@ -716,17 +791,20 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Harford County's top elected official, similar to a mayor. Oversees all county departments, proposes the annual budget, and manages day-to-day county operations including public works, planning, and emergency services.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Bob Cassilly', 'County Executive', 'Republican', 'badge-rep')">
           <div class="candidate-name">Bob Cassilly</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Spencer Dagner', 'County Executive', 'Republican', 'badge-rep')">
           <div class="candidate-name">Spencer Dagner</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Patrick Vincenti', 'County Executive', 'Republican', 'badge-rep')">
           <div class="candidate-name">Patrick Vincenti</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -743,17 +821,20 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       <p class="race-desc-text">Represents District B on the county's seven-member legislative body, voting on local laws, zoning changes, and the county budget.</p>
       <div class="candidate-grid">
         
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Russ English, Jr.', 'County Council — District B', 'Republican', 'badge-rep')">
           <div class="candidate-name">Russ English, Jr.</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card has-links" onclick="openPopup('Stephanie Flasch', 'County Council — District B', 'Republican', 'badge-rep')">
           <div class="candidate-name">Stephanie Flasch</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Alison Imhoff', 'County Council — District B', 'Republican', 'badge-rep')">
           <div class="candidate-name">Alison Imhoff</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
         
       </div>
@@ -761,48 +842,6 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
     </div>
   </div>
 
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Delegate — District 7B</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Lauren Arikan</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Senate — District 7</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">J.B. Jennings</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Delegate — District 34A</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Elliott Joseph Herneker</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Senate — District 34</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Raj Goel</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
   <!-- ===================== DEMOCRATIC ===================== -->
   <div class="section-label">Democratic Primary — May 19, 2026</div>
@@ -823,17 +862,20 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Represents Joppa and Joppatowne on the county's seven-member legislative body. Votes on local laws, zoning changes, and the county budget — your most direct voice in county government.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Kelly "Bear" Bryant', 'County Council — District A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Kelly "Bear" Bryant</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Dion F. Guthrie', 'County Council — District A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Dion F. Guthrie</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card has-links" onclick="openPopup('Nolanda Robert', 'County Council — District A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Nolanda Robert</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
       </div>
 
@@ -846,13 +888,15 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Harford County's top elected official, similar to a mayor. Oversees all county departments, proposes the annual budget, and manages day-to-day county operations including public works, planning, and emergency services.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Matthew J. Brown', 'County Executive', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Matthew J. Brown</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Barbara Osborn Kreamer', 'County Executive', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Barbara Osborn Kreamer</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -865,71 +909,21 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Represents District 34 in the Maryland State Senate, working on state-level legislation covering education, transportation, public safety, and the state budget.</p>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Mary-Dulany James', 'State Senate — District 34', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Mary-Dulany James</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Blane H. Miller, III', 'State Senate — District 34', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Blane H. Miller, III</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
     </div>
   </div>
 
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">President of the County Council</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Mike Ciufo</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">Sheriff</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Terrence Rogers</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Delegate — District 7B</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Candace Hart</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Senate — District 7</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Bill Geibler</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-      <hr class="race-divider">
-
-      <div class="race-title-row"><div class="race-name">State Delegate — District 34A</div><span class="noncompetitive-tag">Non-Competitive</span></div>
-      <div class="candidate-grid">
-        <div class="candidate-card">
-          <div class="candidate-name">Andre V. Johnson, Jr. / Steve Johnson</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
   <!-- COMBINED NON-COMPETITIVE -->
   <div class="section-label">Non-Competitive Races</div>
@@ -948,9 +942,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Jeff Beck', 'County Council — District A', 'Republican', 'badge-rep')">
           <div class="candidate-name">Jeff Beck</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -961,9 +956,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Isabela Dela Cruz', 'County Council — District B', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Isabela Dela Cruz</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -974,9 +970,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Mike Ciufo', 'President of the County Council', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Mike Ciufo</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -987,9 +984,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Terrence Rogers', 'Sheriff', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Terrence Rogers</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -1000,13 +998,15 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Candace Hart', 'State Delegate — District 7B', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Candace Hart</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Lauren Arikan', 'State Delegate — District 7B', 'Republican', 'badge-rep')">
           <div class="candidate-name">Lauren Arikan</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -1017,13 +1017,15 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Bill Geibler', 'State Senate — District 7', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Bill Geibler</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('J.B. Jennings', 'State Senate — District 7', 'Republican', 'badge-rep')">
           <div class="candidate-name">J.B. Jennings</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -1034,17 +1036,20 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Andre V. Johnson, Jr.', 'State Delegate — District 34A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Andre V. Johnson, Jr.</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Steve Johnson', 'State Delegate — District 34A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Steve Johnson</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Elliott Joseph Herneker', 'State Delegate — District 34A', 'Republican', 'badge-rep')">
           <div class="candidate-name">Elliott Joseph Herneker</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -1055,9 +1060,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card">
+        <div class="candidate-card" onclick="openPopup('Raj Goel', 'State Senate — District 34', 'Republican', 'badge-rep')">
           <div class="candidate-name">Raj Goel</div>
-          <div class="candidate-meta"><span class="badge badge-rep">Republican</span><span class="no-website">Website TBD</span></div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
         </div>
       </div>
 
@@ -1080,6 +1086,85 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+</script>
+
+
+<div class="popup-overlay" id="candidatePopup" onclick="handlePopupClick(event)">
+  <div class="popup-box" id="popupBox">
+    <div class="popup-head">
+      <div style="display:flex;align-items:center;gap:12px;flex:1;">
+        <div class="popup-avatar" id="popupAvatar">SF</div>
+        <div>
+          <div class="popup-cand-name" id="popupName"></div>
+          <div class="popup-cand-office" id="popupOffice"></div>
+          <span class="badge" id="popupBadge"></span>
+        </div>
+      </div>
+      <button class="popup-close" onclick="closePopup()">&#215;</button>
+    </div>
+    <div id="popupBody"></div>
+  </div>
+</div>
+
+<script>
+var candidateData = {
+  "Stephanie Flasch": {
+    office: "County Council — District B",
+    party: "Republican",
+    badgeClass: "badge-rep",
+    links: [
+      { icon: "fa-solid fa-globe",      label: "Website",       sub: "stephanieflasch.com",              href: "https://www.stephanieflasch.com" },
+      { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "flaschforDistrictB",               href: "https://www.facebook.com/flaschforDistrictB" },
+      { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "@flaschforcountycouncil",          href: "https://www.instagram.com/flaschforcountycouncil" },
+      { icon: "fa-brands fa-youtube",   label: "YouTube",       sub: "@ElectFlasch",                     href: "https://www.youtube.com/@ElectFlasch" },
+      { icon: "fa-solid fa-envelope",   label: "Email",         sub: "flaschforcountycouncil@gmail.com", href: "mailto:flaschforcountycouncil@gmail.com" },
+      { icon: "fa-solid fa-phone",      label: "Phone",         sub: "(443) 567-1421",                   href: "tel:4435671421" },
+      { icon: "fa-solid fa-newspaper",  label: "E-News Signup", sub: "Subscribe for updates",            href: "https://mailchi.mp/088d04498130/elect-flasch-district-b-e-news-signup" }
+    ]
+  },
+  "Nolanda Robert": {
+    office: "County Council — District A",
+    party: "Democrat",
+    badgeClass: "badge-dem",
+    links: [
+      { icon: "fa-solid fa-globe", label: "Website", sub: "friendsofnolandacampaign.com", href: "https://friendsofnolandacampaign.com" }
+    ]
+  }
+};
+
+function openPopup(name, office, party, badgeClass) {
+  var data = candidateData[name] || null;
+  var initials = name.split(" ").filter(function(w){ return w.length > 1 && w[0] === w[0].toUpperCase() && w[0] !== '"'; }).map(function(w){ return w[0]; }).join("").slice(0,2);
+  document.getElementById("popupAvatar").textContent = initials;
+  document.getElementById("popupName").textContent = name;
+  document.getElementById("popupOffice").textContent = office;
+  var badge = document.getElementById("popupBadge");
+  badge.textContent = party;
+  badge.className = "badge " + badgeClass;
+  var body = document.getElementById("popupBody");
+  if (!data || data.links.length === 0) {
+    body.innerHTML = "<div class=\"popup-no-links\">No campaign links provided yet. Check back soon.</div>";
+  } else {
+    var html = "<div class=\"popup-links-section\"><div class=\"popup-links-heading\">Campaign Links</div>";
+    data.links.forEach(function(l) {
+      html += "<a href=\"" + l.href + "\" target=\"_blank\" rel=\"noopener\" class=\"popup-link-row\">";
+      html += "<div class=\"popup-link-icon\"><i class=\"" + l.icon + "\"></i></div>";
+      html += "<div><div class=\"popup-link-label\">" + l.label + "</div><div class=\"popup-link-sub\">" + l.sub + "</div></div>";
+      html += "</a>";
+    });
+    html += "</div>";
+    body.innerHTML = html;
+  }
+  document.getElementById("candidatePopup").classList.add("open");
+}
+
+function closePopup() {
+  document.getElementById("candidatePopup").classList.remove("open");
+}
+
+function handlePopupClick(e) {
+  if (e.target === document.getElementById("candidatePopup")) closePopup();
+}
 </script>
 
 </body>
