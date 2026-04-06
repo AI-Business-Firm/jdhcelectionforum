@@ -776,14 +776,13 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <div class="countdown-header-text">
           <div class="countdown-party-label">Republican Primary Forum</div>
           <div class="countdown-event-name">Republican Candidates Night</div>
-          <div class="countdown-date-line">Date &amp; Time — To Be Confirmed</div>
+          <div class="countdown-date-line">Date May 18th, 2026&amp; Time — 6:00PM</div>
         </div>
       </div>
       <div class="countdown-body">
         <div style="text-align:center;padding:18px 10px;">
-          <div style="font-size:32px;margin-bottom:10px;">📅</div>
-          <div style="font-size:15px;font-weight:bold;color:#8b1a1a;margin-bottom:8px;font-family:Georgia,serif;">Date Pending Confirmation</div>
-          <div style="font-size:12px;color:#888;font-style:italic;line-height:1.6;font-family:Georgia,serif;">We are working to confirm a date that works for all candidates. Check back here for updates as soon as the date is locked in.</div>
+           <div style="font-size:13px;font-weight:bold;color:#8b1a1a;margin-bottom:12px;font-family:Georgia,serif;">Monday, May 18, 2026 at 6:00 PM</div>
+           <div id="rep-countdown" style="display:flex;justify-content:center;gap:12px;font-family:Georgia,serif;"></div>
         </div>
         <div class="countdown-location">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Joppatowne Christian Church</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Livestreamed on YouTube</a></div>
       </div>
@@ -794,14 +793,13 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <div class="countdown-header-text">
           <div class="countdown-party-label">Democratic Primary Forum</div>
           <div class="countdown-event-name">Democratic Candidates Night</div>
-          <div class="countdown-date-line">Date &amp; Time — To Be Confirmed</div>
+          <div class="countdown-date-line">Date May 19th, 2026 &amp; Time — 6:00PM</div>
         </div>
       </div>
       <div class="countdown-body">
         <div style="text-align:center;padding:18px 10px;">
-          <div style="font-size:32px;margin-bottom:10px;">📅</div>
-          <div style="font-size:15px;font-weight:bold;color:#1a4b8c;margin-bottom:8px;font-family:Georgia,serif;">Date Pending Confirmation</div>
-          <div style="font-size:12px;color:#888;font-style:italic;line-height:1.6;font-family:Georgia,serif;">We are working to confirm a date that works for all candidates. Check back here for updates as soon as the date is locked in.</div>
+           <div style="font-size:13px;font-weight:bold;color:#1a4b8c;margin-bottom:12px;font-family:Georgia,serif;">Tuesday, May 19, 2026 at 6:00 PM</div>
+           <div id="dem-countdown" style="display:flex;justify-content:center;gap:12px;font-family:Georgia,serif;"></div>
         </div>
         <div class="countdown-location">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Joppatowne Christian Church</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Livestreamed on YouTube</a></div>
       </div>
@@ -855,6 +853,35 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+</script>
+<script>
+function renderCountdown(elementId, targetDate, color) {
+  function update() {
+    var now = new Date().getTime();
+    var distance = new Date(targetDate).getTime() - now;
+    if (distance < 0) {
+      document.getElementById(elementId).innerHTML = '<div style="font-size:14px;font-weight:bold;color:' + color + ';">The forum has begun!</div>';
+      return;
+    }
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var units = [['Days', days], ['Hrs', hours], ['Min', minutes], ['Sec', seconds]];
+    var html = '';
+    units.forEach(function(u) {
+      html += '<div style="text-align:center;">';
+      html += '<div style="font-size:28px;font-weight:bold;color:' + color + ';line-height:1;">' + u[1] + '</div>';
+      html += '<div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#888;margin-top:3px;">' + u[0] + '</div>';
+      html += '</div>';
+    });
+    document.getElementById(elementId).innerHTML = html;
+  }
+  update();
+  setInterval(update, 1000);
+}
+renderCountdown('rep-countdown', '2026-05-18T18:00:00', '#8b1a1a');
+renderCountdown('dem-countdown', '2026-05-19T18:00:00', '#1a4b8c');
 </script>
 
 </body>
