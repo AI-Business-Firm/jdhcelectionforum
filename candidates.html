@@ -756,7 +756,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <div class="candidate-card" onclick="openPopup('Keith Runk', 'Sheriff', 'Republican', 'badge-rep')">
           <div class="candidate-name">Keith Runk</div>
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-info-tbd">View info &#8594;</div>
         </div>
       </div>
 
@@ -859,11 +859,6 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">Represents District A on Harford County's seven-member legislative body. Votes on local laws, zoning changes, and the county budget — your most direct voice in county government.</p>
       <div class="candidate-grid">
-        <div class="candidate-card" onclick="openPopup('Kelly &quot;Bear&quot; Bryant', 'County Council — District A', 'Democrat', 'badge-dem')">
-          <div class="candidate-name">Kelly "Bear" Bryant</div>
-          <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
-          <div class="card-info-tbd">Info TBD</div>
-        </div>
         <div class="candidate-card" onclick="openPopup('Dion F. Guthrie', 'County Council — District A', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Dion F. Guthrie</div>
           <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
@@ -984,7 +979,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <div class="candidate-card" onclick="openPopup('Terrence Rogers', 'Sheriff', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Terrence Rogers</div>
           <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-info-tbd">View info &#8594;</div>
         </div>
       </div>
 
@@ -1125,6 +1120,29 @@ var candidateData = {
     badgeClass: "badge-dem",
     links: [
       { icon: "fa-solid fa-globe", label: "Website", sub: "friendsofnolandacampaign.com", href: "https://friendsofnolandacampaign.com" }
+    ]
+  },
+  "Keith Runk": {
+    office: "Sheriff",
+    party: "Republican",
+    badgeClass: "badge-rep",
+    links: [
+      { icon: "fa-solid fa-globe",      label: "Website",       sub: "RunkforSheriff.com",              href: "https://www.runkforsheriff.com" },
+      { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "Runk For Sheriff",                href: "https://www.facebook.com/people/Runk-For-Sheriff/61588213965139/" },
+      { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "@RunkForSheriff",                 href: "https://www.instagram.com/runkforsheriff" },
+      { icon: "fa-solid fa-x-twitter",  label: "X (Twitter)",   sub: "@RunkForSheriff",                 href: "https://twitter.com/RunkForSheriff" },
+      { icon: "fa-solid fa-envelope",   label: "Email",         sub: "runkforsheriff@gmail.com",        href: "mailto:runkforsheriff@gmail.com" }
+    ]
+  },
+  "Terrance Rogers": {
+    office: "Sheriff",
+    party: "Democrat",
+    badgeClass: "badge-dem",
+    links: [
+      { icon: "fa-solid fa-globe",      label: "Website",       sub: "RogersforMD.com",               href: "https://www.rogersformd.com" },
+      { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "RogersforSheriff",              href: "https://www.facebook.com/people/Rogers-for-HarCo-Sheriff/61587405190372/" },
+      { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "@RogersforSheriff",             href: "https://www.instagram.com/rogersformd" },
+      { icon: "fa-solid fa-envelope",   label: "Email",         sub: "info@rogersformd.com",          href: "mailto:info@rogersformd.com" }
     ]
   }
 };
