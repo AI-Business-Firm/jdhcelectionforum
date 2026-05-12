@@ -962,7 +962,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card" onclick="openPopup('Mike Ciufo', 'President of the County Council', 'Democrat', 'badge-dem')">
+        <div class="candidate-card has-links" onclick="openPopup('Mike Ciufo', 'President of the County Council', 'Democrat', 'badge-dem')">
           <div class="candidate-name">Mike Ciufo</div>
           <div class="candidate-meta"><span class="badge badge-dem">Democrat</span></div>
           <div class="card-info-tbd">View info &#8594;</div>
@@ -1150,13 +1150,14 @@ var candidateData = {
     party: "Democrat",
     badgeClass: "badge-dem",
     links: [
-      { icon: "fa-solid fa-globe",      label: "Website",       sub: "www.ciufoforharford.com",              href: "www.ciufoforharford.com" },
-      { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "Mike Ciufo for Harford County Council President",               href: "www.facebook.com/mikeciufoforharfordcountycouncilpresident" },
-      { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "ciufoforharford",          href: "www.instagram.com/ciufoforharford" },
-      { icon: "fa-solid fa-envelope",   label: "Email",         sub: "ciufoforharford@gmail.com", href: "mailto:ciufoforharford@gmail.com" },
-      { icon: "fa-solid fa-phone",      label: "Phone",         sub: "(443) 307-0358",                   href: "tel:4433070358" },
+      { icon: "fa-solid fa-globe",      label: "Website",  sub: "ciufoforharford.com",                              href: "https://www.ciufoforharford.com" },
+      { icon: "fa-brands fa-facebook",  label: "Facebook", sub: "Mike Ciufo for Harford County Council President",  href: "https://www.facebook.com/mikeciufoforharfordcountycouncilpresident" },
+      { icon: "fa-brands fa-instagram", label: "Instagram",sub: "ciufoforharford",                                  href: "https://www.instagram.com/ciufoforharford" },
+      { icon: "fa-solid fa-envelope",   label: "Email",    sub: "ciufoforharford@gmail.com",                        href: "mailto:ciufoforharford@gmail.com" },
+      { icon: "fa-solid fa-phone",      label: "Phone",    sub: "(443) 307-0358",                                   href: "tel:4433070358" }
     ]
-  };
+  }
+};
 
 function openPopup(name, office, party, badgeClass) {
   var data = candidateData[name] || null;
