@@ -748,10 +748,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </div>
       <p class="race-desc-text">The chief law enforcement officer of Harford County. Responsible for running the county jail, courthouse security, serving legal documents, and supporting local police departments.</p>
       <div class="candidate-grid">
-        <div class="candidate-card" onclick="openPopup('Jeffrey R. Gahler', 'Sheriff', 'Republican', 'badge-rep')">
+        <div class="candidate-card has-links" onclick="openPopup('Jeffrey R. Gahler', 'Sheriff', 'Republican', 'badge-rep')">
           <div class="candidate-name">Jeffrey R. Gahler</div>
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
         <div class="candidate-card has-links" onclick="openPopup('Keith Runk', 'Sheriff', 'Republican', 'badge-rep')">
           <div class="candidate-name">Keith Runk</div>
@@ -934,10 +934,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
         <span class="noncompetitive-tag">Non-Competitive</span>
       </div>
       <div class="candidate-grid">
-        <div class="candidate-card" onclick="openPopup('Jeff Beck', 'County Council — District A', 'Republican', 'badge-rep')">
+        <div class="candidate-card has-links" onclick="openPopup('Jeff Beck', 'County Council — District A', 'Republican', 'badge-rep')">
           <div class="candidate-name">Jeff Beck</div>
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
       </div>
 
@@ -1132,6 +1132,24 @@ var candidateData = {
       { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "@RunkForSheriff",                 href: "https://www.instagram.com/runkforsheriff" },
       { icon: "fa-solid fa-x-twitter",  label: "X (Twitter)",   sub: "@RunkForSheriff",                 href: "https://twitter.com/RunkForSheriff" },
       { icon: "fa-solid fa-envelope",   label: "Email",         sub: "runkforsheriff@gmail.com",        href: "mailto:runkforsheriff@gmail.com" }
+    ]
+  },
+  "Jeffrey R. Gahler": {
+    office: "Sheriff",
+    party: "Republican",
+    badgeClass: "badge-rep",
+    links: [
+      { icon: "fa-solid fa-globe",      label: "Website",       sub: "Gahlerforsheriff.com",      href: "https://www.Gahlerforsheriff.com" },
+      { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "HarfordCountySheriff",      href: "https://www.facebook.com/HarfordCountySheriff" },
+      { icon: "fa-solid fa-x-twitter",  label: "X (Twitter)",   sub: "@JeffGahler",               href: "https://x.com/JeffGahler" }
+    ]
+  },
+  "Jeff Beck": {
+    office: "County Council — District A",
+    party: "Republican",
+    badgeClass: "badge-rep",
+    links: [
+      { icon: "fa-solid fa-globe",      label: "Website",       sub: "jeffbeckforharfordcounty.com", href: "https://www.jeffbeckforharfordcounty.com/" }
     ]
   },
   "Terrence Rogers": {
