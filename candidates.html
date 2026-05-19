@@ -779,6 +779,11 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
           <div class="card-info-tbd">Info TBD</div>
         </div>
+        <div class="candidate-card" onclick="openPopup('Samuel Kahl', 'President of the County Council', 'Republican', 'badge-rep')">
+          <div class="candidate-name">Samuel Kahl</div>
+          <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
+          <div class="card-info-tbd">Info TBD</div>
+        </div>
         
       </div>
 
@@ -801,10 +806,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
           <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card" onclick="openPopup('Patrick Vincenti', 'County Executive', 'Republican', 'badge-rep')">
+        <div class="candidate-card has-links" onclick="openPopup('Patrick Vincenti', 'County Executive', 'Republican', 'badge-rep')">
           <div class="candidate-name">Patrick Vincenti</div>
           <div class="candidate-meta"><span class="badge badge-rep">Republican</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
       </div>
 
@@ -1150,6 +1155,14 @@ var candidateData = {
     badgeClass: "badge-rep",
     links: [
       { icon: "fa-solid fa-globe",      label: "Website",       sub: "jeffbeckforharfordcounty.com", href: "https://www.jeffbeckforharfordcounty.com/" }
+    ]
+  },
+  "Patrick Vincenti": {
+    office: "County Executive",
+    party: "Republican",
+    badgeClass: "badge-rep",
+    links: [
+      { icon: "fa-solid fa-globe", label: "Website", sub: "patrickvincenti.com", href: "https://patrickvincenti.com" }
     ]
   },
   "Terrence Rogers": {

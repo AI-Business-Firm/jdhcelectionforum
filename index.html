@@ -809,13 +809,34 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
   </div>
 </div>
 
-<!-- YouTube Live Stream Embed -->
+<!-- ===================== YOUTUBE LIVESTREAM ===================== -->
 <div style="max-width:900px;margin:0 auto;padding:0 20px 40px;">
   <div class="section-label">Live Stream</div>
-  <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:3px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
-    <div style="background:var(--navy);padding:14px 22px;">
-      <div style="font-size:16px;font-weight:bold;color:#fff;">📺 Watch Live on YouTube</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:4px;">Stream begins at 6:00 PM on forum night. If the forum is not live, the embed will show the channel’s live page.</div>
+
+  <!-- Democratic Forum — LIVE TONIGHT -->
+  <div style="background:#fffdf9;border:1px solid #ddd5c4;border-radius:3px;overflow:hidden;margin-bottom:20px;">
+    <div style="background:#1a2744;padding:14px 22px;">
+      <div style="font-size:16px;font-weight:bold;color:#fff;">📺 Watch Live — Democratic Candidates Night</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:4px;">Tuesday, May 19 · 6:00 PM · Joppatowne Christian Church</div>
+    </div>
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/jCueI2HtXE0"
+        title="2026 JDHC Democratic Primary Forum"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Republican Forum — Past Stream -->
+  <div style="background:#fffdf9;border:1px solid #ddd5c4;border-radius:3px;overflow:hidden;">
+    <div style="background:#5a1010;padding:14px 22px;">
+      <div style="font-size:16px;font-weight:bold;color:#fff;">🎞️ Past Stream — Republican Candidates Night</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:4px;">Monday, May 18 · Watch the full recording below</div>
     </div>
     <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
       <iframe
@@ -829,6 +850,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
       </iframe>
     </div>
   </div>
+
 </div>
 
 <!-- Info cards -->
@@ -883,7 +905,11 @@ function renderCountdown(elementId, targetDate, color) {
     var now = new Date().getTime();
     var distance = new Date(targetDate).getTime() - now;
     if (distance < 0) {
-      document.getElementById(elementId).innerHTML = '<div style="font-size:14px;font-weight:bold;color:' + color + ';">The forum has begun!</div>';
+      if (elementId === 'rep-countdown') {
+        document.getElementById(elementId).innerHTML = '<div style="font-size:13px;font-weight:bold;color:#8b1a1a;font-family:Georgia,serif;">This stream has concluded.<br>Thank you for your attendance!</div>';
+      } else {
+        document.getElementById(elementId).innerHTML = '<div style="font-size:14px;font-weight:bold;color:' + color + ';">The forum has begun!</div>';
+      }
       return;
     }
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
