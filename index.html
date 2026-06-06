@@ -769,54 +769,33 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
     </div>
   </div>
 
-  <!-- TBD Forum Date Cards -->
-  <div class="countdown-grid">
-
-    <div class="countdown-card">
-      <div class="countdown-header rep">
-        <div class="countdown-header-text">
-          <div class="countdown-party-label">Republican Primary Forum</div>
-          <div class="countdown-event-name">Republican Candidates Night</div>
-          <div class="countdown-date-line">Monday May 18th, 2026 &amp; Time — 6:00PM</div>
-        </div>
-      </div>
-      <div class="countdown-body">
-        <div style="text-align:center;padding:18px 10px;">
-           <div style="font-size:13px;font-weight:bold;color:#8b1a1a;margin-bottom:12px;font-family:Georgia,serif;">Monday, May 18, 2026 at 6:00 PM</div>
-           <div id="rep-countdown" style="display:flex;justify-content:center;gap:12px;font-family:Georgia,serif;"></div>
-        </div>
-        <div class="countdown-location">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Joppatowne Christian Church</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Livestreamed on YouTube</a></div>
+  <!-- School Board Forum Card -->
+  <div class="countdown-card" style="max-width:540px;margin:0 auto;">
+    <div class="countdown-header" style="background:linear-gradient(135deg,#5a4a2a,#7a6030);">
+      <div class="countdown-header-text">
+        <div class="countdown-party-label">Nonpartisan — HCPSS School Board Forum</div>
+        <div class="countdown-event-name">Board of Education Candidates Night</div>
+        <div class="countdown-date-line">Monday, June 8, 2026 — 6:00 PM</div>
       </div>
     </div>
-
-    <div class="countdown-card">
-      <div class="countdown-header dem">
-        <div class="countdown-header-text">
-          <div class="countdown-party-label">Democratic Primary Forum</div>
-          <div class="countdown-event-name">Democratic Candidates Night</div>
-          <div class="countdown-date-line">Tuesday May 19th, 2026 &amp; Time — 5:45PM</div>
-        </div>
+    <div class="countdown-body">
+      <div style="text-align:center;padding:18px 10px;">
+        <div style="font-size:13px;font-weight:bold;color:#7a5c10;margin-bottom:12px;font-family:Georgia,serif;">Monday, June 8, 2026 at 6:00 PM</div>
+        <div id="school-countdown" style="display:flex;justify-content:center;gap:12px;font-family:Georgia,serif;"></div>
       </div>
-      <div class="countdown-body">
-        <div style="text-align:center;padding:18px 10px;">
-           <div style="font-size:13px;font-weight:bold;color:#1a4b8c;margin-bottom:12px;font-family:Georgia,serif;">Tuesday, May 19, 2026 at 5:45 PM</div>
-           <div id="dem-countdown" style="display:flex;justify-content:center;gap:12px;font-family:Georgia,serif;"></div>
-        </div>
-        <div class="countdown-location">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Joppatowne Christian Church</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Livestreamed on YouTube</a></div>
-      </div>
+      <div class="countdown-location">📍 <a href="https://www.google.com/maps/dir/?api=1&destination=Joppatowne+Christian+Church,725+Trimble+Rd,Joppatowne,MD+21085" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Joppatowne Christian Church</a> &nbsp;|&nbsp; <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Livestreamed on YouTube</a></div>
     </div>
-
   </div>
 </div>
 
 <!-- ===================== YOUTUBE LIVESTREAM ===================== -->
 <div style="max-width:900px;margin:0 auto;padding:0 20px 40px;">
-  <div class="section-label">Live Stream</div>
+  <div class="section-label">Past Streams</div>
 
-  <!-- Democratic Forum — LIVE TONIGHT -->
+  <!-- Democratic Forum — Past Stream -->
   <div style="background:#fffdf9;border:1px solid #ddd5c4;border-radius:3px;overflow:hidden;margin-bottom:20px;">
     <div style="background:#1a2744;padding:14px 22px;">
-      <div style="font-size:16px;font-weight:bold;color:#fff;">📺 Watch Live — Democratic Candidates Night</div>
+      <div style="font-size:16px;font-weight:bold;color:#fff;">🎞️ Past Stream — Democratic Candidates Night</div>
       <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;margin-top:4px;">Tuesday, May 19 · 6:00 PM · Joppatowne Christian Church</div>
     </div>
     <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
@@ -905,11 +884,7 @@ function renderCountdown(elementId, targetDate, color) {
     var now = new Date().getTime();
     var distance = new Date(targetDate).getTime() - now;
     if (distance < 0) {
-      if (elementId === 'rep-countdown') {
-        document.getElementById(elementId).innerHTML = '<div style="font-size:13px;font-weight:bold;color:#8b1a1a;font-family:Georgia,serif;">This stream has concluded.<br>Thank you for your attendance!</div>';
-      } else {
-        document.getElementById(elementId).innerHTML = '<div style="font-size:14px;font-weight:bold;color:' + color + ';">The forum has begun!</div>';
-      }
+      document.getElementById(elementId).innerHTML = '<div style="font-size:13px;font-weight:bold;color:' + color + ';font-family:Georgia,serif;">This forum has concluded.<br>Thank you for your attendance!</div>';
       return;
     }
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -929,8 +904,7 @@ function renderCountdown(elementId, targetDate, color) {
   update();
   setInterval(update, 1000);
 }
-renderCountdown('rep-countdown', '2026-05-18T18:00:00', '#8b1a1a');
-renderCountdown('dem-countdown', '2026-05-19T17:45:00', '#1a4b8c');
+renderCountdown('school-countdown', '2026-06-08T18:00:00', '#7a5c10');
 </script>
 
 </body>
