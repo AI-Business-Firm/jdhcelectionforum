@@ -946,10 +946,10 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
           <div class="candidate-meta"><span class="badge badge-nonpartisan">Nonpartisan</span></div>
           <div class="card-info-tbd">Info TBD</div>
         </div>
-        <div class="candidate-card" onclick="openPopup('Shernice Shermaine Mundell', 'Board of Education — District A', 'Nonpartisan', 'badge-nonpartisan')">
+        <div class="candidate-card has-links" onclick="openPopup('Shernice Shermaine Mundell', 'Board of Education — District A', 'Nonpartisan', 'badge-nonpartisan')">
           <div class="candidate-name">Shernice Shermaine Mundell</div>
           <div class="candidate-meta"><span class="badge badge-nonpartisan">Nonpartisan</span></div>
-          <div class="card-info-tbd">Info TBD</div>
+          <div class="card-view-info">View info &#8594;</div>
         </div>
         <div class="candidate-card" onclick="openPopup('Dani Paez', 'Board of Education — District A', 'Nonpartisan', 'badge-nonpartisan')">
           <div class="candidate-name">Dani Paez</div>
@@ -1240,6 +1240,14 @@ var candidateData = {
       { icon: "fa-brands fa-facebook",  label: "Facebook",      sub: "RogersforSheriff",              href: "https://www.facebook.com/people/Rogers-for-HarCo-Sheriff/61587405190372/" },
       { icon: "fa-brands fa-instagram", label: "Instagram",     sub: "@RogersforSheriff",             href: "https://www.instagram.com/rogersformd" },
       { icon: "fa-solid fa-envelope",   label: "Email",         sub: "info@rogersformd.com",          href: "mailto:info@rogersformd.com" }
+    ]
+  },
+  "Shernice Shermaine Mundell": {
+    office: "Board of Education — District A",
+    party: "Nonpartisan",
+    badgeClass: "badge-nonpartisan",
+    links: [
+      { icon: "fa-solid fa-globe", label: "Website", sub: "shernice4schoolboard.com", href: "https://www.shernice4schoolboard.com" }
     ]
   },
    "Mike Ciufo": {
