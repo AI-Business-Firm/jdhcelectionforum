@@ -483,7 +483,7 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
 
   .schedule-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 8px;
   }
@@ -636,36 +636,51 @@ textarea::placeholder { color: #bbb; font-style: italic; font-size: 13px; }
   <div class="section-label">Forum Schedule</div>
 
   <div class="about-block">
-    <h2>2026 Primary Forum Dates</h2>
+    <h2>2026 General Election Forum Dates</h2>
     <div class="schedule-grid">
 
       <div class="schedule-card">
-        <div class="schedule-card-header rep">
-          Republican Primary Forum
-          <div class="schedule-card-date">Monday May 18, 2026 — 6:00 PM</div>
+        <div class="schedule-card-header" style="background:linear-gradient(135deg,#5a4a2a,#7a6030);">
+          Board of Ed &amp; Administrative Roles
+          <div class="schedule-card-date">Wednesday, September 9, 2026 — 6:00 PM</div>
         </div>
         <div class="schedule-card-body">
-          <div class="schedule-item"><span>Sheriff</span><span class="schedule-time">6:05 PM</span></div>
-          <div class="schedule-item"><span>President of the County Council</span><span class="schedule-time">6:30 PM</span></div>
-          <div class="schedule-item"><span>County Executive</span><span class="schedule-time">7:05 PM</span></div>
-          <div class="schedule-item"><span>County Council District B</span><span class="schedule-time">7:40 PM</span></div>
+          <div class="schedule-item"><span>Register of Wills</span><span class="schedule-time">6:05 PM</span></div>
+          <div class="schedule-item"><span>Clerk of the County Court</span><span class="schedule-time">6:30 PM</span></div>
+          <div class="schedule-item"><span>Board of Ed — District A</span><span class="schedule-time">6:55 PM</span></div>
+          <div class="schedule-item"><span>Board of Ed — District B</span><span class="schedule-time">7:20 PM</span></div>
         </div>
       </div>
 
       <div class="schedule-card">
-        <div class="schedule-card-header dem">
-          Democratic Primary Forum
-          <div class="schedule-card-date">Tuesday, May 19, 2026 — 5:45 PM</div>
+        <div class="schedule-card-header" style="background:linear-gradient(135deg,#111b33,#1a2744);">
+          State Level Candidates
+          <div class="schedule-card-date">Monday, September 21, 2026 — 6:00 PM</div>
         </div>
         <div class="schedule-card-body">
-          <div class="schedule-item"><span>County Council — District A</span><span class="schedule-time">5:50 PM</span></div>
-          <div class="schedule-item"><span>County Executive</span><span class="schedule-time">6:25 PM</span></div>
-          <div class="schedule-item"><span>State Senate — District 34</span><span class="schedule-time">6:50 PM</span></div>
+          <div class="schedule-item"><span>House of Representatives — Dist. 7B</span><span class="schedule-time">6:05 PM</span></div>
+          <div class="schedule-item"><span>State Senate — District 7</span><span class="schedule-time">6:30 PM</span></div>
+          <div class="schedule-item"><span>State Delegate — District 34A</span><span class="schedule-time">6:55 PM</span></div>
+          <div class="schedule-item"><span>State Senate — District 34</span><span class="schedule-time">7:30 PM</span></div>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="schedule-card-header" style="background:linear-gradient(135deg,#1a2744,#243260);">
+          County Level Candidates
+          <div class="schedule-card-date">Tuesday, September 22, 2026 — 6:00 PM</div>
+        </div>
+        <div class="schedule-card-body">
+          <div class="schedule-item"><span>Sheriff</span><span class="schedule-time">6:05 PM</span></div>
+          <div class="schedule-item"><span>County Council — District A</span><span class="schedule-time">6:30 PM</span></div>
+          <div class="schedule-item"><span>County Council — District B</span><span class="schedule-time">6:55 PM</span></div>
+          <div class="schedule-item"><span>President of the County Council</span><span class="schedule-time">7:20 PM</span></div>
+          <div class="schedule-item"><span>County Executive</span><span class="schedule-time">7:45 PM</span></div>
         </div>
       </div>
 
     </div>
-    <p style="margin-top:16px;font-size:13px;color:var(--muted);font-style:italic;">Joppatowne Christian Church, 725 Trimble Rd, Joppatowne, MD 21085. Both forums will also be <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:var(--gold);">streamed live on YouTube</a>.</p>
+    <p style="margin-top:16px;font-size:13px;color:var(--muted);font-style:italic;">Joppatowne Christian Church, 725 Trimble Rd, Joppatowne, MD 21085. All forums will also be <a href="https://www.youtube.com/@JDHC/streams" target="_blank" rel="noopener" style="color:var(--gold);">streamed live on YouTube</a>.</p>
   </div>
 
   
